@@ -75,6 +75,7 @@ type Opt<T> = Option<T>;
 
 #[derive(Debug, Clone, Copy, Builder)]
 #[builder(
+    const,
     on((_, _) => tuple),
 )]
 pub struct ProgressStyle {
@@ -98,7 +99,7 @@ pub struct ProgressStyle {
     pub done: char,
     #[builder(default = "' '")]
     pub empty: char,
-    #[builder(default)]
+    #[builder(default = "false")]
     pub use_percent: bool,
 }
 
@@ -160,6 +161,10 @@ impl Drop for ProgressGroup {
 }
 
 impl ProgressGroup {
+    pub fn progress_builder<L, T>(self: &Arc<Self>) -> ProgressBuilder<T, L> {
+        Progress::builder(self.clone())
+    }
+
     pub fn reset_widths(&self) {
         self.num_len.store(0, Ordering::Release);
         self.den_len.store(0, Ordering::Release);

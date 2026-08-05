@@ -1,6 +1,6 @@
 use std::time::Duration;
 
-use prog::{Progress, ProgressGroup, ProgressStyle};
+use prog::{ProgressGroup, ProgressStyle};
 
 fn main() {
     let group = ProgressGroup::builder()
@@ -10,7 +10,8 @@ fn main() {
         .build();
 
     let thread = {
-        let mut prog = Progress::builder(group.clone())
+        let mut prog = group
+            .progress_builder()
             .label("hello")
             .init(0)
             .max(100)
