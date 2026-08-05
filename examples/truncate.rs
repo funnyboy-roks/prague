@@ -1,6 +1,6 @@
 use std::time::Duration;
 
-use prog::{ProgressGroup, ProgressStyle};
+use prague::{ProgressGroup, ProgressStyle};
 
 fn main() {
     let group = ProgressGroup::builder()

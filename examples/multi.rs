@@ -1,6 +1,6 @@
 use std::{thread::JoinHandle, time::Duration};
 
-use prog::{ProgressGroup, ProgressStyle};
+use prague::{ProgressGroup, ProgressStyle};
 
 fn main() {
     let mut threads = Vec::new();
