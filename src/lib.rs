@@ -126,7 +126,6 @@ pub struct ProgressDisplay {
 }
 
 #[derive(Debug, Builder)]
-#[builder(kind = "type-state")]
 #[builder(build_fn {
     map = |g| -> Arc<ProgressGroup> { Arc::new(g) }
 })]
@@ -137,7 +136,7 @@ pub struct ProgressGroup {
     progress_width: Option<usize>,
     #[builder(skip)]
     is_drawing: AtomicBool,
-    #[builder(into)]
+    #[builder(into, default)]
     style: ProgressStyle,
     /// [ 5/10]
     ///  ^^

@@ -36,6 +36,4 @@ fn main() {
     );
 
     threads.into_iter().try_for_each(JoinHandle::join).unwrap();
-
-    drop(group);
 }
